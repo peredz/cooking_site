@@ -8,71 +8,77 @@
           rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
           crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 </head>
 <body>
 
-	<header class="p-3 bg-dark text-white">
-    <div class="container">
-      <div class="d-inline-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a class="navbar-brand" href="#">          <img
-              src="\static\images\logos.png"
-              height="70"
-              alt="FoodFetish"
-              loading="lazy"
-              />
-            </a>
-            <a class="text-decoration-none text-decoration-none" href="#">
-            Food<br>
-                Fetish
-            </a>
-    	</div>
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 text-secondary">РЕЦЕПТЫ</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 text-white">About</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
-        </form>
-
-        <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-warning">Sign-up</button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-	<header id="header" class="header" style="background-color: #F4EEEE">
+	<header id="header" class="header" style="background-color: #F4EEEE; padding: 16px;">
         <div class="container">
-		<div class="d-inline-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a class="navbar-brand" href="#">          <img
+		<div class="d-inline-flex flex-wrap align-items-center
+		 justify-content-center justify-content-lg-start">
+            <a class="navbar-brand" href="#">
+                <img
               src="\static\images\logos.png"
               height="70"
               alt="FoodFetish"
               loading="lazy"/>
             </a>
-            <a class="text-decoration-none text-decoration-none" href="#" style="font-weight: 800;">
+            <a class="text-decoration-none text-decoration-none" href="#"
+               style="font-weight: 800; text-decoration: none;">
             Food<br>
                 Fetish
             </a>
     	</div>
 
-        <div class="d-inline-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" style="margin-left: 80px;">
-            <div><a  href="#" style="font-weight: 400;">
+        <div class="d-inline-flex flex-wrap align-items-center justify-content-center
+        justify-content-lg-start" style="margin-left: 80px; width: 700px;">
+            <div style="margin-right: 42px;"><a  href="#" style="font-weight: 400;
+             text-decoration: none;">
                 РЕЦЕПТЫ
-            </a>
+            </a></div>
+
+            <div class="search-box">
+                <input class='search-txt' type="text" name="" placeholder="Введите название блюда" style="text-align: left;">
+                <a class="search-btn" href="#">
+                    <i class='fas fa-search'></i>
+                </a>
             </div>
-            <div class="input-group rounded">
-              <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-              <span class="input-group-text border-0" id="search-addon" style="height: 36px; border-radius: 0.9rem">
-                <i class="fas fa-search"></i>
-              </span>
+            <a href="#">
+                <img
+              src="\static\images\plate.png"
+              height="59"
+              alt="FoodFetish"
+              loading="lazy"/>
+            </a>
+            </a>
+        </div>
+        <div class="d-inline-flex flex-wrap align-items-center justify-content-center justify-content-lg-start" style="margin-left: 72px;">
+            <a href="#" style="margin-right: 31px;">
+                <img
+              src="\static\images\heart.png"
+              height="30"
+              alt="liked"
+              loading="lazy"/>
+            </a>
+
+            <div class="dropdown" style="margin-right: 31px;">
+              <a href="#" class="d-block link-dark text-decoration-none" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="\static\images\ava.jpg" alt="profile_photo" width="50" height="50" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
             </div>
 
+            <a href="#">
+                <img
+              src="\static\images\hand.png"
+              alt="profile_photo"
+              loading="lazy"/>
+            </a>
         </div>
         </div>
 
