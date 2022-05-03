@@ -1,8 +1,12 @@
 from flask_restful import reqparse, abort, Api, Resource
 from flask import Blueprint, jsonify
-import db_session
+from data import db_session
 from data.FoodFetish import User, Recipes, Recipe,\
     ProductCards, Categories, Associations
+
+ 
+db_session.global_init('db/foodfetish.db')
+db_sess = db_session.create_session()
 
 
 blueprint = Blueprint(

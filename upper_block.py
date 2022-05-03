@@ -1,10 +1,9 @@
 from flask import Flask
-from flask import url_for, request, render_template
+from flask import render_template
 from flask_login import LoginManager
 from data.FoodFetish import User
 from data import db_session
-from data import API
-
+import API
 
 
 def main():

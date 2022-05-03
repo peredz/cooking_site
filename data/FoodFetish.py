@@ -16,7 +16,6 @@ class User(SqlAlchemyBase, SerializerMixin):
                                      default=datetime.datetime.now)
     email = sqlalchemy.Column(sqlalchemy.String,
                               index=True, unique=True, nullable=False)
-    recipes = orm.relation("recipes", back_populates='user')
 
 
 class Recipes(SqlAlchemyBase, SerializerMixin):
