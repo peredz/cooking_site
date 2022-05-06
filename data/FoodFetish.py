@@ -6,6 +6,10 @@ import datetime
 
 
 class User(SqlAlchemyBase, SerializerMixin):
+
+    def __repr__(self):
+        return f'<user> {self.id} {self.login} {self.password}; {self.created_date}; {self.email}'
+
     __tablename__ = 'users'
 
     id = sqlalchemy.Column(sqlalchemy.Integer,
@@ -16,6 +20,8 @@ class User(SqlAlchemyBase, SerializerMixin):
                                      default=datetime.datetime.now)
     email = sqlalchemy.Column(sqlalchemy.String,
                               index=True, unique=True, nullable=False)
+    profile_photo = sqlalchemy.Column(sqlalchemy.String, nullable=True,
+                                      default='static/images/nophoto.jpg')
 
 
 class Recipes(SqlAlchemyBase, SerializerMixin):

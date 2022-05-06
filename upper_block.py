@@ -3,12 +3,12 @@ from flask import render_template
 from flask_login import LoginManager
 from data.FoodFetish import User
 from data import db_session
-import API
+import api
 
 
 def main():
     db_session.global_init("db/foodfetish.db")
-    app.register_blueprint(API.blueprint)
+    app.register_blueprint(api.blueprint)
     app.run(port=8080, host='127.0.0.1')
 
 
@@ -25,7 +25,12 @@ def load_user(user_id):
 
 @app.route('/site')
 def eat():
-    return render_template('main_win.html')
+    return render_template('base.html')
+
+
+@app.route('/index')
+def index():
+    return render_template('main_menu.html')
 
 
 if __name__ == '__main__':

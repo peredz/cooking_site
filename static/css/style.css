@@ -7,18 +7,12 @@ body {
   background-color: #E5E5E5;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  padding: 0;
-  margin: 0;
-  text-fransform: uppercase;
-}
 
 ul, il {
   display: block;
 }
 
 .container {
-  background-color: #F4EEEE;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,7 +34,7 @@ header a {
   transition: absolute;
   top: 50%;
   left: 50%;
-  background: #FFD7D7;
+  background: #9B9090;
   height: 40px;
   border-radius: 30px;
   padding: 10px;
@@ -70,7 +64,7 @@ header a {
 }
 
 .search-txt {
-    background: #FFD7D7;
+    background: #9B9090;
     border: none;
     font-family: inherit;
     font-size: 18px;

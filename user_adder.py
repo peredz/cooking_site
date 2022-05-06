@@ -17,9 +17,9 @@ def main():
     db_session.global_init('db/foodfetish.db')
     db_sess = db_session.create_session()
     user = User()
-    user.login = 'admn'
-    user.password = 'admn'
-    user.email = 'peredoz224@gmal.com'
+    user.login = 'admiin3'
+    user.password = 'admiin3'
+    user.email = 'ppppoz2243@gmal.com'
     db_sess.add(user)
     db_sess.commit()
     # recepts = db_sess.query(User).all()
