@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+{% if current_user.is_authenticated %}
+
+<div class="content">
+    <div class="container">
+                <div class="text-center card-box">
+                    <h1 class="text-danger">{{ msg }}</h1>
+                    <div class="member-card pt-2 pb-2">
+                        <div class="thumb-lg member-thumb mx-auto"><img
+                                src={{ current_user.profile_photo }}
+                                class="rounded-circle img-thumbnail"
+                                alt="profile-image"></div>
+                        <div class="">
+                            <h4>{{ current_user.name }}</h4>
+                            <p class="text-muted">{{ current_user.login }}</p>
+                        </div>
+                        <form method="post" enctype="multipart/form-data">
+                               <div class="form-group">
+                                    <input type="file" class="form-control-file" id="photo" name="file">
+                                </div>
+                            <button type="submit" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Сменить фото профиля</button>
+                            </form>
+                    </div>
+            </div>
+    </div>
+
+</div>
+{% else %}
+<div class="content">
+    <div class="container">
+                <div class="text-center card-box">
+                    <div class="member-card pt-2 pb-2">
+                        <div class="thumb-lg member-thumb mx-auto"><img
+                                src={{ ava }}
+                                class="rounded-circle img-thumbnail"
+                                alt="profile-image"></div>
+                        <div class="">
+                            <h4>{{ name }}</h4>
+                            <p class="text-muted">{{ login }}</p>
+                        </div>
+                    </div>
+            </div>
+    </div>
+
+</div>
+
+{% endif %}
+
+{% endblock %}

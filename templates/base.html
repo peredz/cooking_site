@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>да</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <link rel="stylesheet"
           type="text/css"
@@ -32,20 +37,20 @@
 
 </head>
 <body>
-
-	<header id="header" class="header"
+{% if current_user.is_authenticated %}
+    	<header id="header_authenticated" class="header"
             style="background-color: #F4EEEE; padding: 16px;">
-        <div class="container">
+        <div class="container" style="align-items: center;">
 		<div class="d-inline-flex flex-wrap align-items-center
 		 justify-content-center justify-content-lg-start">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/home">
                 <img
-              src="\static\images\logos.png"
+              src="\static\images\logo.png"
               height="70"
               alt="FoodFetish"
               loading="lazy"/>
             </a>
-            <a class="text-decoration-none text-decoration-none" href="#"
+            <a class="text-decoration-none text-decoration-none" href="/home"
                style="font-weight: 800; text-decoration: none;">
             Food<br>
                 Fetish
@@ -92,16 +97,20 @@
               <a href="#" class="d-block link-dark text-decoration-none"
                  id="dropdownUser1" data-bs-toggle="dropdown"
                  aria-expanded="false">
-                <img src="\static\images\ava.jpg" alt="profile_photo"
+                <img src={{ current_user.profile_photo }} alt="profile_photo"
                      width="50" height="50" class="rounded-circle">
               </a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Личный профиль</a></li>
-                <li><a class="dropdown-item" href="#">Выйти из аккаунта</a></li>
+                <li><a class="dropdown-item"
+                       href="/profile/{{ current_user.id }}">Личный профиль
+                </a></li>
+                <li><a class="dropdown-item"
+                       href="/logout">Выйти из аккаунта
+                </a></li>
               </ul>
             </div>
 
-            <a href="#">
+            <a href="/create/rcp">
                 <img
               src="\static\images\hand.png"
               alt="profile_photo"
@@ -112,14 +121,89 @@
 
 	</header>
 
+{% else %}
+    	<header id="header_non_authenticated" class="header"
+            style="background-color: #F4EEEE; padding: 16px;">
+        <div class="container" style="align-items: center;">
+		<div class="d-inline-flex flex-wrap align-items-center
+		 justify-content-center justify-content-lg-start">
+            <a class="navbar-brand" href="/home">
+                <img
+              src="\static\images\logo.png"
+              height="70"
+              alt="FoodFetish"
+              loading="lazy"/>
+            </a>
+            <a class="text-decoration-none text-decoration-none" href="/home"
+               style="font-weight: 800; text-decoration: none;">
+            Food<br>
+                Fetish
+            </a>
+    	</div>
+
+        <div class="d-inline-flex flex-wrap align-items-center
+         justify-content-center
+        justify-content-lg-start" style="margin-left: 80px; width: 700px;">
+            <div style="margin-right: 42px;"><a  href="#" style="font-weight: 400;
+             text-decoration: none;">
+                РЕЦЕПТЫ
+            </a></div>
+
+            <div class="search-box">
+                <input class='search-txt' type="text" name=""
+                       placeholder="Введите название блюда"
+                       style="text-align: left;">
+                <a class="search-btn" href="#">
+                    <i class=''></i>
+                </a>
+            </div>
+            <a href="#">
+                <img
+              src="\static\images\plate.png"
+              height="59"
+              alt="FoodFetish"
+              loading="lazy"/>
+            </a>
+            </a>
+        </div>
+        <div class="d-inline-flex flex-wrap align-items-center
+         justify-content-center justify-content-lg-start"
+             style="margin-left: 72px;">
+            <a href="#" style="margin-right: 31px;">
+                <img
+              src="\static\images\heart.png"
+              height="30"
+              alt="liked"
+              loading="lazy"/>
+            </a>
+
+            <div class="dropdown" style="margin-right: 31px;">
+              <a href="/login" class="d-block link-dark text-decoration-none"
+                 id="DropdownNotAuthorized" data-bs-toggle="dropdown"
+                 aria-expanded="false">
+                <img src="\static\images\nophoto.jpg" alt="profile_photo"
+                     width="50" height="50" class="rounded-circle">
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <li><a class="dropdown-item" href="/login">Войти в аккаунт</a></li>
+                <li><a class="dropdown-item" href="/register">Зарегистрироваться</a></li>
+              </ul>
+            </div>
+        </div>
+        </div>
+
+	</header>
+
+{% endif %}
+
 	<!-- Begin page content -->
-    <main role="main" class="container">
+    <main role="main" class="container" style="">
         {% block content %}{% endblock %}
     </main>
 
 
     <footer class="bg-dark text-center text-white fixed-bottom">
-      <div class="container p-4 pb-0 ">
+      <div class="container p-4 pb-0 " style="align-items: center;">
         <section class="mb-4">
         <!-- Facebook -->
               <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"

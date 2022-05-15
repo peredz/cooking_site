@@ -1,7 +1,7 @@
 from flask import Flask
 from data import db_session
-from data.FoodFetish import User, Recipes, Recipe,\
-    ProductCards, Categories, Associations
+from data.FoodFetish import User, Recipes, Recipe, Categories, Associations
+from werkzeug.security import generate_password_hash
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -17,11 +17,22 @@ def main():
     db_session.global_init('db/foodfetish.db')
     db_sess = db_session.create_session()
     user = User()
-    user.login = 'admiin3'
-    user.password = 'admiin3'
-    user.email = 'ppppoz2243@gmal.com'
+    user.login = 'admin'
+    user.password = generate_password_hash('admin')
+    user.email = 'pppoz22@gmal.com'
+    user.name = 'Капитан Крюк'
     db_sess.add(user)
     db_sess.commit()
+
+
+    a = ['Preparations' ,'PastriesDesserts', 'MainDishes', 'Breakfasts',
+         'Salads', 'Soups', 'PastaPizza', 'Snacks', 'Sandwiches', 'Risotto',
+         'Drinks', 'SaucesMarinades', 'Broths']
+    for i in a:
+        rec = Categories()
+        rec.CatName = i
+        db_sess.add(rec)
+        db_sess.commit()
     # recepts = db_sess.query(User).all()
     # print(recepts)
         # db_session.global_init(input())

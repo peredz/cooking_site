@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if current_user.is_authenticated %}
+
+  <div class="container">
+      <form class="creation_form" method="post" enctype="multipart/form-data ">
+          <div class="form-group">
+            <label for="recname">Название рецепта</label>
+            <input type="text" name="name" class="form-control" id="recname" placeholder="название рецепта">
+          </div>
+          <div class="form-group">
+            <label for="rectime">Время приготовления</label>
+            <input type="text" name="time" class="form-control" id="rectime" placeholder="в минутах">
+          </div>
+          <div class="form-group">
+            <label for="selectCat">Категория блюда</label>
+            <select multiple class="form-control" id="selectCat">
+              <option value="Preparations">Заготовки</option>
+              <option value="PastriesDesserts">Выпечка и десерты</option>
+              <option value="MainDishes">Основные блюда</option>
+              <option value="Breakfasts">Завтраки</option>
+              <option value="Salads">Салаты</option>
+              <option value="Soups">Супы</option>
+              <option value="PastaPizza">Паста и пицца</option>
+              <option value="Snacks">Закуски</option>
+              <option value="Sandwiches">Сэндвичи</option>
+              <option value="Risotto">Ризотто</option>
+              <option value="Drinks">Напитки</option>
+              <option value="SaucesMarinades">Соусы и маринады</option>
+              <option value="Broths">Бульоны</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="description">Описание блюда</label>
+            <textarea class="form-control" id="description" rows="3"></textarea>
+            <input type="text" name="descr" class="form-control" id="descr" placeholder="описание">
+          </div>
+          <div class="form-group">
+             <input type="file" name="file" class="form-control-file" id="photo">
+             <button type="submit" class="btn btn-primary mt-3 btn-rounded waves-effect w-md waves-light">Создать рецепт</button>
+          </div>
+
+          <div class="form-group">
+            <div class="container"style="max-width: 370px;">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="inputFormIngridients">
+                                <div class="input-group mb-3">
+                                    <input type="text" name="ingridients" class="form-control m-input" placeholder="Ингридиент и колличество" autocomplete="off">
+                                    <div class="input-group-append">
+                                        <button id="removeIngridient" type="button" class="btn btn-danger">Убрать</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="newIngridient"></div>
+                            <button id="addIngridient" type="button" class="btn btn-info">Добавить ингридиент</button>
+                        </div>
+                    </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="container"style="max-width: 370px;">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="inputFormSteps">
+                                <div class="input-group mb-3">
+                                    <input type="text" name="steps" class="form-control m-input" placeholder="Распишите шаг приготовления" autocomplete="off">
+                                    <div class="input-group-append">
+                                        <button id="removeStep" type="button" class="btn btn-danger">Убрать</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="newStep"></div>
+                            <button id="addStep" type="button" class="btn btn-info">Добавить шаг</button>
+                        </div>
+                    </div>
+            </div>
+          </div>
+      </form>
+  </div>
+
+
+    <script type="text/javascript">
+        // add row
+        $("#addIngridient").click(function () {
+            var html = '';
+            html += '<div id="inputFormSteps">';
+            html += '<div class="input-group mb-3">';
+            html += '<input type="text" name="ingridients" class="form-control m-input" placeholder="Распишите шаг приготовления" autocomplete="off">';
+            html += '<div class="input-group-append">';
+            html += '<button id="removeIngridient" type="button" class="btn btn-danger">Убрать</button>';
+            html += '</div>';
+            html += '</div>';
+
+            $('#newIngridient').append(html);
+        });
+
+        // remove row
+        $(document).on('click', '#removeIngridient', function () {
+            $(this).closest('#inputFormRow').remove();
+        });
+    </script>
+    <script type="text/javascript">
+            // add step
+            $("#addStep").click(function () {
+                let x = 1;
+                const y = x++;
+                var html = '';
+                html += '<div id="inputFormIngridients">';
+                html += '<div class="input-group mb-3">';
+                html += '<input type="text" name="steps" class="form-control m-input" placeholder="Ингридиент и колличество" autocomplete="off">';
+                html += '<div class="input-group-append">';
+                html += '<button id="removeStep" type="button" class="btn btn-danger">Убрать</button>';
+                html += '</div>';
+                html += '</div>';
+
+                $('#newStep').append(html);
+            });
+
+            // remove row
+            $(document).on('click', '#removeStep', function () {
+                $(this).closest('#inputFormRow').remove();
+            });
+        </script>
+        <script>
+        function getValue() {
+            var select = document.getElementById("select_");
+            var value = select.value;
+            alert(value);
+        }
+        </script>
+
+{% else %}
+
+<h1>ОТКАЗАНО В ДОСТУПЕ</h1>
+
+{% endif %}
+
+{% endblock %}
